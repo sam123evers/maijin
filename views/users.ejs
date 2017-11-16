@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Users</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+
+  </head>
+  <body>
+    <div class="main-container"><!--open main container-->
+      
+    <!--%%%%%%%%%%%%%%%%%%%%%%%%%%%  NAVBAR SECTION  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%-->
+
+      <div class="navbar"><!--open navbar div-->
+        <img id="navbar-logo" src="https://www.graphicsprings.com/filestorage/stencils/bc1c521b0d95290ee1990b51b60b0275.svg" />
+        <div class="navbar-links-container"><!--open navbar links container -->
+            <a href="/challenges"><p>challenges</p></a>
+            <a href="/experinces"><p>experiences</p></a>
+            <a href="/portals"><p>portals</p></a>
+            <a href="/companies"><p>companies</p></a>
+            <a href="/talent"><p>talent</p></a>
+        </div><!--close navbar links container-->
+      </div><!--close navbar div-->
+        
+
+    <!--$$$$$$$$$$$$$$$$$$$$$$$$$$$    BANNER SECTION  $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$-->
+
+        <div class="users-banner"><!--open users banner div-->
+          <div class="users-icon-container"><!--open users icon container-->
+              <img id="users-banner-icon" src="http://www.clipartbest.com/cliparts/7ia/Ro8/7iaRo845T.png"/>
+              <h2>List of Users</h2>
+           </div><!--close users icon container-->
+           <div class="banner-info"><!--open banner info div-->
+              <p>Students build relationships with thousands of employers on Maijin by participating in grassroots marketing campaigns that display their abilites, experiences and skills.</p>
+           </div><!--close banner info div-->
+        </div><!--close users banner div-->
+
+    <!--&&&&&&&&&&&&&&&&&&&&&&&&&&&&  CATEGORIES SECTION &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&-->
+
+        <div class="categories-container"><!--open categories container-->
+            <h3 id="refine-search">Refine Search</h3>
+              <div class="the-categories"><!--open THE CATEGORIES div-->
+                <a><p>business</p></a>
+                <a><p>chemistry</p></a>
+                <a><p>these are</p></a>
+                <a><p>links that</p></a>
+                <a><p>could refine</p></a>
+                <a><p>the search</p></a>
+                <a><p>parameters</p></a>
+                <a><p>geophysics</p></a>
+                <a><p>political science</p></a>
+              </div><!--close THE CATEGORIES div -->
+        </div><!--close categories container-->
+
+  <!--#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#-->         
+      <!-- This is the div with all of the rendered users inside a container-->
+
+        <div class="users-container"><!--open users container div -->
+          <div class="search-users">
+            <p>search users</p>
+            <input type="text" name="search here for a specific user">
+          </div>
+            <% for(var i = 0; i<users.length; i++) { %>
+
+            <div class="user"><!--open user div  -->
+              <div class="user-landscape"></div><!--open and close user landscape div -->
+              <div class="user-info"><!--open user info div -->
+
+                  <p id="nick-name">
+                      <%= users[i].get('nickName') ? users[i].get('nickName'): "Unknown User Name"%>
+                  </p>
+
+                  <p id="university">
+                      <%= users[i].get('university') ? users[i].get('university'): "Unknown University" %>
+                  </p>
+                  <p id="major">
+                      <%= users[i].get('major') ? users[i].get('major'): "Unknown Major" %>
+                  </p>
+                  <p id="email">
+                      <%= users[i].get('email') ? users[i].get('email'): "Unknown email" %>
+                  </p>
+                  
+              
+              </div><!--close user info div -->
+                  
+              <img id="avatar" src="<%= users[i].get('avatarUrl') ? users[i].get('avatarUrl'): "https://en.bidaway.com/img/no_image_user_profile.png" %>"/>
+                   
+                
+                  
+            </div><!--close user div -->
+            <%}%>
+        </div><!--close users container div-->
+      
+    </div><!--close main container -->
+   
+  </body>
+</html>
