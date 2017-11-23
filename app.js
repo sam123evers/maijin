@@ -3,6 +3,7 @@
 var express = require('express');
 var timeout = require('connect-timeout');
 var path = require('path');
+var logger = require('morgan')
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var AV = require('leanengine');
@@ -13,8 +14,15 @@ require('./cloud');
 var app = express();
 
 // 设置模板引擎
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
+// app.set('views', path.join(__dirname, 'views'));
+// app.set('view engine', 'ejs');
+
+app.set('public', path.join(__dirname, 'public'));
+// app.engine('html', renderFile)
+app.set('view engine', 'html');
+// app.set('view engine', 'ejs');
+
+
 
 app.use(express.static('public'));
 
@@ -27,19 +35,19 @@ app.use(AV.express());
 app.enable('trust proxy');
 // 需要重定向到 HTTPS 可去除下一行的注释。
 // app.use(AV.Cloud.HttpsRedirect());
-
+app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.get('/', function(req, res) {
-  res.render('index', { currentTime: new Date() });
+  res.render('index');
 });
 
 // 可以将一类的路由单独保存在一个文件中
-app.use('/todos', require('./routes/todos'));
 
-app.use('/users', require('./routes/users'))
+
+app.use('/api/users', require('./routes/apiRouter'))
 
 app.use(function(req, res, next) {
   // 如果任何一个路由都没有返回响应，则抛出一个 404 异常给后续的异常处理器
