@@ -9,6 +9,7 @@ var bodyParser = require('body-parser');
 var AV = require('leanengine');
 
 // 加载云函数定义，你可以将云函数拆分到多个文件方便管理，但需要在主文件中加载它们
+//bringing in code from cloud.js file but there in nothig important in that file right now
 require('./cloud');
 
 var app = express();
@@ -17,14 +18,20 @@ var app = express();
 // app.set('views', path.join(__dirname, 'views'));
 // app.set('view engine', 'ejs');
 
+//this line tells something to look in the public folder for some stuff
 app.set('public', path.join(__dirname, 'public'));
+// app.set('lib', path.join(__dirname, 'lib'));
 // app.engine('html', renderFile)
+
+//this line sets the view engine to html so it will read html files and not ejs files
 app.set('view engine', 'html');
 // app.set('view engine', 'ejs');
 
 
-
-app.use(express.static('public'));
+//specifies a root directory from which to serve static assets, like html files
+//if no file is found there is next() function so that the server can keep looking and doesnt 404
+//index.html file in public directory is being rendered because of this
+app.use(express.static('lib'));
 
 // 设置默认超时时间
 app.use(timeout('15s'));
