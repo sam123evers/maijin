@@ -3,7 +3,7 @@ import React from 'react'
 class Navbar extends React.Component {
 	render() {
 		return (
-			<div className="navbar">
+			<div className="container-fluid navbar">
 				<img id="navbar-logo" src="http://www.maijin.me/img/logo_maijin.png" />
         		<ul className="nav">
                     <li className="nav-item">

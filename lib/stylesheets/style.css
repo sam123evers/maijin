@@ -1,9 +1,17 @@
 * {
 	box-sizing: border-box;
+	font-family: 'Lato', sans-serif;
 }
 
 body {
 
+}
+
+.navbar {
+	position: fixed;
+	top: 0;
+	background-color: white;
+	z-index: 1;
 }
 
 .nav-link {
@@ -16,27 +24,80 @@ img {
 }
 
 .banner {
-	border: 1px solid red;
+	background-color: rgb(119, 209, 59);
+	margin-top: 80px;
+	height: 150px;
+	text-align: center;
 }
 
-.users-categories {
-	border: 1px solid blue;
+.banner-icon-container {
+	margin: 2% 1%;
+	
+}
+
+#banner-icon {
+	font-size: 60px;
+}
+
+
+
+.blurb-container {
+	
+	height: 150px;
+}
+
+.blurb {
+	margin: 2.5% 22.5%;
+	color: white;
+	width: 60%;
+	font-size: 20px;
+	
+	
+}
+
+.users-categories-container {
 	
 }
 
 .categories {
-	border: 1px solid limegreen;
+	
 }
 
-.banner-info {
-	border: 1px solid magenta;
+
+.search input {
+	width: 80%;
+}
+
+.users {
+	background-color: whitesmoke;
 }
 
 .single-user {
 	list-style-type: none;
-	border: 1px solid crimson;
+	background-color: white;
 	display: inline-block;
-	width: 30%;
+	width: 25%;
+	margin: 2%;
+	position: relative;
+}
+
+.user-landscape {
+	float: left;
+	display: inline-block;
+	background-image: url("https://static.pexels.com/photos/92340/pexels-photo-92340.jpeg");
+	width: 20%;
+}
+
+.user-info {
+	
+	width: 80%;
+	display: inline-block;
+}
+
+#avatar {
+	position: absolute;
+	width: 20%;
+	border-radius: 50%;
 }
 
 
