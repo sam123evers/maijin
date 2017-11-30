@@ -19,7 +19,7 @@ var app = express();
 // app.set('view engine', 'ejs');
 
 //this line tells something to look in the public folder for some stuff
-app.set('public', path.join(__dirname, 'public'));
+app.set('src', path.join(__dirname, 'src'));
 // app.set('lib', path.join(__dirname, 'lib'));
 // app.engine('html', renderFile)
 

@@ -1,0 +1,51 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+
+}
+
+.nav-link {
+	font-size: 30px;
+	color: rgb(119, 209, 59);
+}
+
+img {
+	width: 60px;
+}
+
+.banner {
+	border: 1px solid red;
+}
+
+.users-categories {
+	border: 1px solid blue;
+	
+}
+
+.categories {
+	border: 1px solid limegreen;
+}
+
+.banner-info {
+	border: 1px solid magenta;
+}
+
+.single-user {
+	list-style-type: none;
+	border: 1px solid crimson;
+	display: inline-block;
+	width: 30%;
+}
+
+
+
+
+
+
+
+
+
+
+
