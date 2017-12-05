@@ -1,4 +1,5 @@
 import Backbone from 'backbone'
+import PageableCollection from 'backbone.paginator'
 
 export var UserModel = Backbone.Model.extend({
 	default: {
@@ -18,13 +19,6 @@ export var UserModel = Backbone.Model.extend({
 		graduation_date: "",
 		avatarUrl: "",
 		country: "",
-		authData: {
-			lc_weapp: {
-				openid: "",
-				expires_in: Number,
-				session_key: ""
-			}
-		},
 		mobilePhoneVerified: Boolean,
 		objectId: "",
 		createdAt: "",
@@ -35,7 +29,30 @@ export var UserModel = Backbone.Model.extend({
 	urlRoot: "/api/users"
 })
 
-export var UserCollection = Backbone.Collection.extend({
+export var UserCollection = Backbone.PageableCollection.extend({
 	model: UserModel,
-	url: '/api/users'
+	url: '/api/users',
+	state: {
+		firstPage: 1,
+		lastPage: null,
+		currentPage: null,
+		pageSize: 30,
+		totalPages: null,
+		totalRecords: null,
+		sortKey: null,
+		order: 1
+	},
+	queryParams: {
+		currentPage: "page",
+      	pageSize: "per_page",
+      	totalPages: "total_pages",
+      	totalRecords: "total_entries",
+      	sortKey: "sort_by",
+      	order: "order",
+      	directions: {
+        	"-1": "asc",
+        	"1": "desc"
+      }
+	}
+
 })

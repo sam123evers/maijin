@@ -1,15 +1,19 @@
 import React from 'react'
 
+import PaginationNavbar from './paginationNavbar'
+
 class UserList extends React.Component {
 	render() {
-			
+			console.log(this.props)
 		return (
     
-      <div className="container-fluid users-categories-container">
+      <div className="container-fluid users-categories-container">{/*begin main container*/}
 		    
-        <div className="row users-categories">
+       {/*_#_#_#_#_#_#_#_#_#_#_#------CATEGORIES SECTION------#_#_#_#_#_#_#_#_#_#_#_#_#_*/} 
+
+        <div className="row users-categories">{/*begin users/categories container*/}
           
-          <div className="col categories">
+          <div className="col categories">{/*begin categories container*/}
               <h3 id="refine-search">Refine Search</h3>
               <div className="the-categories">
                   <a><p>business</p></a>
@@ -22,13 +26,13 @@ class UserList extends React.Component {
                   <a><p>geophysics</p></a>
                   <a><p>political science</p></a>
               </div>
-          </div>
+          </div>{/*end categories container*/}
         
       
+        {/*_#_#_#_#_#_#_#_#_#_#_#-------USERS LIST SECTION-------#_#_#_#_#_#_#_#_#_#_#_#_#_#_#*/}
 
 
-
-				  <div className="col-9 users">
+				  <div className="col-9 users">{/*begin users container*/}
             
             <div className="search">
 					     <h3>Search Users</h3>
@@ -36,26 +40,30 @@ class UserList extends React.Component {
 				    </div>
 				    
             <div className="users-list">
-          			 <ul key={this.props.userCollection.models}>
+          			 <ul key={this.props.userCollection}>
+
           				  {this.props.userCollection.models.map((userData) => <SingleUser data={userData} />)}
           			 </ul>
             </div>
-          </div>
-        </div>
-      </div>
+            <PaginationNavbar />
+          
+          </div> 
+        
+        </div>    
+      </div>  
         
     )
-	}
-}
+  }                 
+}                   
 
 class SingleUser extends React.Component {
 
 	render() {
-		
+		  {/*console.log(this)*/}
 		return(
-			<li className="single-user" key={this.props.data.cid}>
-				<div className="user-landscape"></div>
-        <div className="user-info">
+			<li className="single-user" key={this.props.data.id}>{/*begin list item*/}
+				<div className="user-landscape"></div>{/*backgrond photo for each user*/}
+        <div className="user-info">{/*open user info container*/}
               <p id="nick-name">
                   {this.props.data.get('nickName') ? this.props.data.get('nickName') : "unkown user name"} 
               </p>
@@ -73,7 +81,11 @@ class SingleUser extends React.Component {
               
         </div>
                   
-        <img id="avatar" src={this.props.data.get('avatarUrl') ? this.props.data.get('avatarUrl') : `https://en.bidaway.com/img/no_image_user_profile.png`}/>
+        <img id="avatar" 
+            src={this.props.data.get('avatarUrl') ? 
+                this.props.data.get('avatarUrl') : 
+                `https://en.bidaway.com/img/no_image_user_profile.png`}
+          />
       </li>
 			
 		)

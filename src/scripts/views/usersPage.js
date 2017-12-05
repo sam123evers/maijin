@@ -6,6 +6,7 @@ import Banner from './components/banner'
 import CategorySidebar from './components/categorySidebar'
 import Navbar from './components/navbar'
 import UserList from './components/userList'
+import PaginationNavbar from './components/paginationNavbar'
 
 
 
@@ -28,7 +29,7 @@ class UsersPage extends React.Component {
     		  <Navbar />
           <Banner />
           <UserList userCollection={this.state.userColl}/>
-    	</div>
+      </div>
     )
   }
 }
