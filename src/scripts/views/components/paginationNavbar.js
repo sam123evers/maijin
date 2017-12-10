@@ -1,7 +1,7 @@
 import React from 'react'
 import Backbone from 'backbone'
 import ACTIONS from '../../actions.js'
-import PageableCollection from 'backbone.paginator'
+
 
 
 

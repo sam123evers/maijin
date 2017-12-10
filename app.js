@@ -17,14 +17,14 @@ var app = express();
 
 // 设置模板引擎
 // app.set('views', path.join(__dirname, 'views'));
-// app.set('view engine', 'ejs');
 
-//this line tells something to look in the public folder for some stuff
-app.set('src', path.join(__dirname, 'src'));
-// app.set('lib', path.join(__dirname, 'lib'));
+
+//this line tells express to look in the lib folder for files to render
+// app.set('src', path.join(__dirname, 'src'));
+app.set('lib', path.join(__dirname, 'lib'));
 // app.engine('html', renderFile)
 
-//this line sets the view engine to html so it will read html files and not ejs files
+//this line tells express that the extension of the file will be .html so it will read html files and not ejs files
 app.set('view engine', 'html');
 // app.set('view engine', 'ejs');
 
@@ -48,9 +48,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.get('/', function(req, res) {
-  res.render('index');
-});
+// app.get('/', function(req, res) {
+//   res.render('index');
+// });
 
 // 可以将一类的路由单独保存在一个文件中
 

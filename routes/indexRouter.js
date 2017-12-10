@@ -1,8 +1,8 @@
-let Router = require('express').Router;
-const indexRouter = Router()
+// let Router = require('express').Router;
+// const indexRouter = Router()
 
-indexRouter.get('/', function (req, res) {
-  res.render('index');
-});
+// indexRouter.get('/', function (req, res) {
+//   res.render('index');
+// });
 
-module.exports = indexRouter
+// module.exports = indexRouter

@@ -4,7 +4,7 @@ import PaginationNavbar from './paginationNavbar'
 
 class UserList extends React.Component {
 	render() {
-			console.log(this.props)
+			
 		return (
     
       <div className="container-fluid users-categories-container">{/*begin main container*/}

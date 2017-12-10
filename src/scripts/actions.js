@@ -2,7 +2,8 @@ import UsersPage from './views/usersPage'
 import STORE from './store'
 import UserModel from './models/userModel'
 import UserCollection from './models/userModel'
-import PagableCollection from 'backbone.paginator'
+
+
 
 
 var ACTIONS = {
@@ -23,6 +24,7 @@ var ACTIONS = {
 
 	nextPageButtonClick: function() {
 		console.log('nextPageButtonClick')
+		
 		
 	}
 

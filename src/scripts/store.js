@@ -1,5 +1,4 @@
 import Backbone from 'backbone'
-import PageableCollection from 'backbone.paginator'
 
 import {UserModel, UserCollection} from './models/userModel'
 

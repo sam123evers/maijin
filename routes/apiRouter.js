@@ -2,14 +2,18 @@
 var router = require('express').Router();
 var AV = require('leanengine');
 
-var User = AV.Object.extend('_User');
+var usersObject = AV.Object.extend('_User');
+
+
 
 //GET Route
 router.get('/', function(req, res, next) {
-  var query = new AV.Query(User);
-  query.get('_User')
+  var perPage = 30
+  var page = req.params.page || 1
+  var query = new AV.Query(usersObject);
+  query.limit(perPage)
+  query.skip((perPage * page) - perPage)
   query.find().then(function(results) {
-    
     res.json(results);
   }, 
   function(err) {
@@ -25,6 +29,8 @@ router.get('/', function(req, res, next) {
     }
   }).catch(next);
 });
+
+
 
 //Post Route
 router.post('/', function(req, res, next) {
