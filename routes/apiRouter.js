@@ -4,32 +4,35 @@ var AV = require('leanengine');
 
 var usersObject = AV.Object.extend('_User');
 
-
-
-//GET Route
+// GET Route
 router.get('/', function(req, res, next) {
-  var perPage = 30
-  var page = req.params.page || 1
-  var query = new AV.Query(usersObject);
-  query.limit(perPage)
-  query.skip((perPage * page) - perPage)
-  query.find().then(function(results) {
-    res.json(results);
-  }, 
-  function(err) {
-    if (err.code === 101) {
-      // 该错误的信息为：{ code: 101, message: 'Class or object doesn\'t exists.' }，说明 Todo 数据表还未创建，所以返回空的 Todo 列表。
-      // 具体的错误代码详见：https://leancloud.cn/docs/error_code.html
-      res.render('users', {
-        title: 'Users',
-        todos: []
+  
+    var query = new AV.Query(usersObject);
+    var pageNumber = req.query.page
+    var perPage = 30
+    query.limit(perPage)
+    query.skip((perPage * pageNumber) - perPage)
+    query.count(usersObject).then((userCount) => {
+      query.find().then(function(userData) {
+        res.json({
+            "total_entries": userCount,
+            "per_page": perPage,
+            "userInfo": userData
+        });
       });
-    } else {
-      next(err);
-    }
-  }).catch(next);
+    });
+  
 });
 
+
+//GET user info by objectID
+router.get('/user_profile/:id', function(req, res, next) {
+  const id = req.params.id
+  var query = new AV.Query(usersObject);
+  query.get(id).then((results) => {
+    res.json(results)
+  })
+});
 
 
 //Post Route

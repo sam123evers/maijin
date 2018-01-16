@@ -25,7 +25,7 @@ class UsersPage extends React.Component {
   
   render() {
     return (
-    	<div className="users=page">
+    	<div className="users-page">
     		  <Navbar />
           <Banner />
           <UserList userCollection={this.state.userColl}/>

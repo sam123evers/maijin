@@ -1,5 +1,5 @@
 import Backbone from 'backbone'
-
+import PageableCollection from 'backbone.paginator'
 
 export var UserModel = Backbone.Model.extend({
 	default: {
@@ -24,12 +24,24 @@ export var UserModel = Backbone.Model.extend({
 		createdAt: "",
 		updatedAt: ""
 	},
+	idAttribute: "ObjectId",
+	urlRoot: "/api/users/user_profile"
 
-	idAttribute: "objectId",
-	urlRoot: "/api/users"
 })
 
-export var UserCollection = Backbone.Collection.extend({
+export var UserCollection = Backbone.PageableCollection.extend({
 	model: UserModel,
-	url: '/api/users'
+	url: '/api/users',
+	parseState: function(res, queryParams, state, options) {
+		return {
+			totalRecords: res.total_entries,
+			pageSize: res.per_page
+		}
+	},
+	parseRecords: function(response) {
+		return response.userInfo
+	},
+	state: {
+		pageSize: null,
+	}
 })

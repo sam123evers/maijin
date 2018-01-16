@@ -1,12 +1,11 @@
 import Backbone from 'backbone'
 
-import {UserModel, UserCollection} from './models/userModel'
+import {UserModel, PaginationModel, UserCollection} from './models/userModel'
 
 var STORE = Object.assign({}, Backbone.Events, {
 	data: {
 		userColl: new UserCollection(),
-		userMod: new UserModel()
-
+		userMod: new UserModel({}),
 	},
 
 	set: function(newobject) {

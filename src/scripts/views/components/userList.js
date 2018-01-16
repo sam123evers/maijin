@@ -1,10 +1,10 @@
 import React from 'react'
+import ACTIONS from './../../actions'
 
 import PaginationNavbar from './paginationNavbar'
 
 class UserList extends React.Component {
 	render() {
-			
 		return (
     
       <div className="container-fluid users-categories-container">{/*begin main container*/}
@@ -45,7 +45,7 @@ class UserList extends React.Component {
           				  {this.props.userCollection.models.map((userData) => <SingleUser data={userData} />)}
           			 </ul>
             </div>
-            <PaginationNavbar />
+            <PaginationNavbar paginationState={this.props.userCollection.state}/>
           
           </div> 
         
@@ -59,34 +59,38 @@ class UserList extends React.Component {
 class SingleUser extends React.Component {
 
 	render() {
-		  {/*console.log(this)*/}
+		  
 		return(
-			<li className="single-user" key={this.props.data.id}>{/*begin list item*/}
-				<div className="user-landscape"></div>{/*backgrond photo for each user*/}
-        <div className="user-info">{/*open user info container*/}
-              <p id="nick-name">
-                  {this.props.data.get('nickName') ? this.props.data.get('nickName') : "unkown user name"} 
-              </p>
-              <p>
-                  {this.props.data.get('university') ? this.props.data.get('university') : "unknown university"}
-              </p>
-              <p>
-                  {this.props.data.get('major') ? this.props.data.get('major') : "unknown major"} 
-              </p>
-              <p>
-                  {this.props.data.get('email') ? this.props.data.get('email') : "unknown email"}
-              </p>
-                  	
-                  
-              
-        </div>
-                  
-        <img id="avatar" 
-            src={this.props.data.get('avatarUrl') ? 
-                this.props.data.get('avatarUrl') : 
-                `https://en.bidaway.com/img/no_image_user_profile.png`}
-          />
-      </li>
+      
+        <a href={`#/users/user_profile/${this.props.data.attributes.objectId}`}>
+  			<li className="single-user" key={this.props.data.id}>
+  				<div className="user-landscape"></div>{/*backgrond photo for each user*/}
+          <div className="user-info">{/*open user info container*/}
+                <p id="nick-name">
+                    {this.props.data.get('nickName') ? this.props.data.get('nickName') : "unknown user name"} 
+                </p>
+                <p>
+                    {this.props.data.get('university') ? this.props.data.get('university') : "unknown university"}
+                </p>
+                <p>
+                    {this.props.data.get('major') ? this.props.data.get('major') : "unknown major"} 
+                </p>
+                <p>
+                    {this.props.data.get('graduation_date') ? this.props.data.get('graduation_date') : "unknown graduation date"}
+                </p>
+                    	
+                    
+                
+          </div>
+                    
+          <img className="avatar" 
+              src={this.props.data.get('avatarUrl') ? 
+                  this.props.data.get('avatarUrl') : 
+                  `https://en.bidaway.com/img/no_image_user_profile.png`}
+            />
+        </li>
+        </a>
+
 			
 		)
 	}

@@ -35,6 +35,10 @@ img {
 	font-size: 60px;
 }
 
+.the-div {
+	border: 3px solid blue;
+}
+
 
 
 .blurb-container {
@@ -75,6 +79,7 @@ img {
 	width: 25%;
 	margin: 2%;
 	position: relative;
+	cursor: pointer;
 }
 
 .user-landscape {
@@ -90,11 +95,51 @@ img {
 	display: inline-block;
 }
 
-#avatar {
+.avatar {
 	position: absolute;
 	width: 20%;
 	border-radius: 50%;
 }
+
+			/*-=-=-=-=-=-=-=-=-=-=USER PROFILE PAGE-=-=-=-=-=-=-=-=-=-=-*/
+
+.user-profile {
+	margin-top: 80px;
+}
+
+.user-profile-landscape {
+	height: 250px;
+	background: url(https://hdwallsource.com/img/2014/5/green-background-21868-22421-hd-wallpapers.jpg);
+}
+
+.profile-column-left {
+	text-align: center;
+	position: relative;
+}
+
+.profile-column-left-info {
+	margin-top: 40%;
+}
+
+#user-profile-pic {
+	position: absolute;
+	top: -25%;
+	width: 50%;
+	border-radius: 50%;
+	border: 3px solid whitesmoke;
+}
+
+.pagination {
+	width: 60%;
+	margin: 0 auto;
+}
+
+.pagination-navbar-container li {
+	cursor: pointer;
+}
+
+
+
 
 
 
